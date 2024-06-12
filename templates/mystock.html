@@ -190,16 +190,18 @@
 							<div class="logo"><a href="/">ShopIt</a></div>
 							<nav class="main_nav">
 								<ul class="d-flex flex-row align-items-start justify-content-start">
-									<li><a href="contact">Contact</a></li>
+									<li><a href="/contact">Contact</a></li>
 									{% if user.is_authenticated %}<!--in built function that checks if the user is logged in-->
 									<li>Hello, {{user.first_name}}</li>
-									<li><a href="shoplist">Shop Now</a></li>
-									<li><a href="mystock/mystock">My Items</a></li>
+									<li><a href="/shoplist">Shop Now</a></li>
+									<li><a href="/mystock/mystock">My Items</a></li>
 									<li><a href="accounts/logout">Logout</a></li>
 									{% else %}
 									<li><a href="accounts/register">Register</a></li>
 									<li><a href="accounts/login">Login</a></li>
 									<li><a href="about">About us</a></li>
+									
+									{% endif %}
 									
 										
 									
@@ -249,6 +251,7 @@
 				<li><a href="accounts/register">Register</a></li>
 				<li><a href="accounts/login">Login</a></li>
 				<li><a href="about">About us</a></li>
+				{% endif %}
 			</ul>
 		</div>
 		<div class="menu_social">
@@ -324,6 +327,35 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="destinations" id="destinations">
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+				</div>
+			</div>
+			<div class="row destinations_row">
+				<div class="col">
+					<div class="destinations_container item_grid">
+						{% for seller_attribute in seller_attributes %}
+						<!-- MyItems -->
+						<div class="destination item" style="width: 300px; height: 400px; margin: 10px; display: inline-block; vertical-align: top;">
+							<div class="destination_image">
+								<img src="{{seller_attribute.img.url}}" alt="" style="width: 400px; height: 200px; object-fit: cover;">
+							</div>
+							<div class="destination_content">
+								<div class="destination_title"><a href="destinations.html">{{seller_attribute.objname}}</a></div>
+								<div class="destination_subtitle"><p>{{seller_attribute.desc}}</p></div>
+								<div class="destination_price">${{seller_attribute.price}}</div>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 
 	<!-- Map 
 

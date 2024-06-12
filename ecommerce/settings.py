@@ -100,9 +100,9 @@ DATABASES = {
 }
 #added  for render postgres
 
-POSTGRES_LOCALLY=False#you can connect to postgres locally if you want to
-if ENVIRONMENT=='production'or POSTGRES_LOCALLY==True:
-    DATABASES['default']=dj_database_url.parse(os.getenv('DATABASE_URL'))
+POSTGRES_LOCALLY=True#you can connect to postgres locally if you want to
+#if ENVIRONMENT=='production'or POSTGRES_LOCALLY==True:
+DATABASES['default']=dj_database_url.parse(os.getenv('DATABASE_URL'))
 
 
 
