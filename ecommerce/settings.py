@@ -12,6 +12,18 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+#added for render postgres
+import dj_database_url
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+ENVIRONMENT=os.getenv('ENVIRONMENT',default='production')
+
+
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,9 +33,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-u2wuvf!5=60c+skv(a%)ns48ai6op864kxf33s799kyl)=*s!s'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']#you  can also put ['*'] if you want to allow all hosts.
@@ -85,6 +98,12 @@ DATABASES = {
         'HOST' : 'localhost'
     }
 }
+#added  for render postgres
+
+POSTGRES_LOCALLY=False#you can connect to postgres locally if you want to
+if ENVIRONMENT=='production'or POSTGRES_LOCALLY==True:
+    DATABASES['default']=dj_database_url.parse(os.getenv('DATABASE_URL'))
+
 
 
 # Password validation
