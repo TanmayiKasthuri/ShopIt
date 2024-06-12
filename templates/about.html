@@ -79,11 +79,16 @@
 		</div>
 		<div class="menu_content">
 			<ul>
-				<li><a href="inex.html">Home</a></li>
-				<li><a href="about.html">About us</a></li>
-				<li><a href="#">Services</a></li>
-				<li><a href="news.html">News</a></li>
-				<li><a href="contact.html">Contact</a></li>
+				<li><a href="contact">Contact</a></li>
+				{% if user.is_authenticated %}<!--in built function that checks if the user is logged in-->
+				<li>Hello, {{user.first_name}}</li>
+				<li><a href="shoplist">Shop Now</a></li>
+				<li><a href="mystock/mystock">My Items</a></li>
+				<li><a href="accounts/logout">Logout</a></li>
+				{% else %}
+				<li><a href="accounts/register">Register</a></li>
+				<li><a href="accounts/login">Login</a></li>
+				<li><a href="about">About us</a></li>
 			</ul>
 		</div>
 		<div class="menu_social">

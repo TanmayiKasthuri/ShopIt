@@ -225,16 +225,21 @@
 
 	<div class="menu">
 		<div class="menu_header d-flex flex-row align-items-center justify-content-start">
-			<div class="menu_logo"><a href="index.html">Travello</a></div>
+			<div class="menu_logo"><a href="index.html">ShopIt</a></div>
 			<div class="menu_close_container ml-auto"><div class="menu_close"><div></div><div></div></div></div>
 		</div>
 		<div class="menu_content">
 			<ul>
-				<li><a href="inex.html">Home</a></li>
-				<li><a href="about.html">About us</a></li>
-				<li><a href="#">Services</a></li>
-			
-				<li><a href="contact.html">Contact</a></li>
+				<li><a href="contact">Contact</a></li>
+				{% if user.is_authenticated %}<!--in built function that checks if the user is logged in-->
+				<li>Hello, {{user.first_name}}</li>
+				<li><a href="shoplist">Shop Now</a></li>
+				<li><a href="mystock/mystock">My Items</a></li>
+				<li><a href="accounts/logout">Logout</a></li>
+				{% else %}
+				<li><a href="accounts/register">Register</a></li>
+				<li><a href="accounts/login">Login</a></li>
+				<li><a href="about">About us</a></li>
 			</ul>
 		</div>
 		<div class="menu_social">
@@ -270,37 +275,6 @@
 				
 					</div>
 				</div>
-
-				
-
-
-	<div class="destinations" id="destinations">
-		<div class="container">
-			<div class="row">
-				<div class="col text-center">
-				</div>
-			</div>
-			<div class="row destinations_row">
-				<div class="col">
-					<div class="destinations_container item_grid">
-						{% for att in atts %}
-						<!-- ShopLists -->
-						<div class="destination item" style="width: 300px; height: 400px; margin: 10px; display: inline-block; vertical-align: top;">
-							<div class="destination_image" style="margin-right: 10px;">
-								<img src="{{att.img.url}}" alt="" style="width: 400px; height: 200px; object-fit: cover;">
-							</div>
-							<div class="destination_content">
-								<div class="destination_title"><a href="destinations.html">{{att.objname}}</a></div>
-								<div class="destination_subtitle"><p>{{att.desc}}</p></div>
-								<div class="destination_price">${{att.price}}</div>
-							</div>
-						</div>
-						{% endfor %}
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 </div>
 
 <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>

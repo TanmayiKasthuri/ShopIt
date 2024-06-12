@@ -5,7 +5,7 @@
 <title>ShopIt</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Travello template project">
+<meta name="description" content="ShopItProject"><!--content="Travello template project"-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
 <link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
@@ -130,18 +130,26 @@
 
 	<div class="menu">
 		<div class="menu_header d-flex flex-row align-items-center justify-content-start">
-			<div class="menu_logo"><a href="index.html">Travello</a></div>
+			<div class="menu_logo"><a href="index.html">ShopIt</a></div>
 			<div class="menu_close_container ml-auto"><div class="menu_close"><div></div><div></div></div></div>
 		</div>
 		<div class="menu_content">
 			<ul>
-				<li><a href="inex.html">Home</a></li>
-				<li><a href="about.html">About us</a></li>
-				<li><a href="#">Services</a></li>
-				<li><a href="news.html">News</a></li>
-				<li><a href="contact.html">Contact</a></li>
+				<li><a href="contact">Contact</a></li>
+				{% if user.is_authenticated %}<!--in built function that checks if the user is logged in-->
+				<li>Hello, {{user.first_name}}</li>
+				<li><a href="shoplist">Shop Now</a></li>
+				<li><a href="mystock/mystock">My Items</a></li>
+				<li><a href="accounts/logout">Logout</a></li>
+				{% else %}
+				<li><a href="accounts/register">Register</a></li>
+				<li><a href="accounts/login">Login</a></li>
+				<li><a href="about">About us</a></li>
+				
+				{% endif %}
 			</ul>
 		</div>
+
 		<div class="menu_social">
 			<div class="menu_phone ml-auto">Call us: 00-56 445 678 33</div>
 			<ul class="d-flex flex-row align-items-start justify-content-start">
