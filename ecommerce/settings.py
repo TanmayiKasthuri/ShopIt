@@ -13,13 +13,13 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 #added for render postgres
-import dj_database_url
+#import dj_database_url
 
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 
-load_dotenv()
+#load_dotenv()
 
-ENVIRONMENT=os.getenv('ENVIRONMENT',default='production')
+#ENVIRONMENT=os.getenv('ENVIRONMENT',default='production')
 
 
 
@@ -33,7 +33,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+#SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = 'django-insecure-u2wuvf!5=60c+skv(a%)ns48ai6op864kxf33s799kyl)=*s!s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
