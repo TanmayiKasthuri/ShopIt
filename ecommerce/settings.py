@@ -89,20 +89,27 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'shopsite',
-        'USER' : 'postgres',
-        'PASSWORD' : '1234',
-        'HOST' : 'localhost'
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'shopsite',
+#         'USER' : 'postgres',
+#         'PASSWORD' : '1234',
+#         'HOST' : 'localhost'
+#     }
+# }
 #added  for render postgres
 
-POSTGRES_LOCALLY=True#you can connect to postgres locally if you want to
-#if ENVIRONMENT=='production'or POSTGRES_LOCALLY==True:
-DATABASES['default']=dj_database_url.parse(os.getenv('DATABASE_URL'))
+# POSTGRES_LOCALLY=True#you can connect to postgres locally if you want to
+# #if ENVIRONMENT=='production'or POSTGRES_LOCALLY==True:
+# DATABASES['default']=dj_database_url.parse(os.getenv('DATABASE_URL'))
+
+DATABASES={
+    'default':{
+        'ENGINE':'django.db.backends.sqlite3',
+        'NAME':os.path.join(BASE_DIR,'db.sqlite3'),
+    }
+}
 
 
 
